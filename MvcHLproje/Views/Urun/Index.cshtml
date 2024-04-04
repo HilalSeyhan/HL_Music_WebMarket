@@ -1,0 +1,82 @@
+﻿@using MvcHLproje.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Urun>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Ürünler Sayfası</li>
+</ol>
+<!--arama ile listeleme-->
+<div style="text-align:right;">
+    @using (Html.BeginForm("Index", "Urun", FormMethod.Get))
+    {
+        <p>
+            Ürün Adı :  @Html.TextBox("p")<!--buradaki p parametresi textbox'a yazılan değer oluyor.-->
+            <input type="submit" value="Ara"/>
+        </p>
+    }
+</div>
+<table class="table table-bordered" style="margin-top:20px;">
+    <tr>
+        <th>Id</th>
+        <th>Ürün</th>
+        <th>Sanatçı</th>
+        <th>Stok</th>
+        <th>Alış Fiyat</th>
+        <th>Satış Fiyat</th>
+        <th>Kategori</th>
+        <th>Görsel</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Satış Yap</th>
+    </tr>
+
+    @foreach (var u in Model)
+    {
+    <tr>
+        <td>@u.UrunId</td>
+        <td>@u.UrunAd</td>
+        <td>@u.Sanatci</td>
+        <td>@u.Stok</td>
+        <td>@u.AlisFiyat ₺</td>
+        <td>@u.SatisFiyat ₺</td>
+        <td>@u.Kategori.KategoriAd</td><!--urun tablosunda virtual kullandım kategori tablosuna ulaştım oradan ulaşmak istenilen değeri de nokta koyup yazmalıyız-->
+
+
+        <td>
+            <a href="@u.UrunGorsel" target="_blank">
+                <img src="@u.UrunGorsel" style="width:100px; height:100px;" />
+            </a>
+        </td>
+
+
+        <td>
+            <a href="/Urun/UrunSil/@u.UrunId" class="btn btn-danger">Sil</a>
+        </td>
+
+        <td>
+            <a href="/Urun/UrunGetir/@u.UrunId" class="btn btn-success">Güncelle</a>
+        </td>
+
+        <td>
+            <a href="/Urun/SatisYap/@u.UrunId" class="btn btn-default" style="background-color:mediumslateblue; color:white;">Satış Yap</a>
+        </td>
+    </tr>
+    }
+
+</table>
+
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }),
+new PagedListRenderOptions
+{
+    LiElementClasses = new List<string>
+    { "page-link"}
+})
+<a href="/Urun/YeniUrun/" class="btn btn-primary">Ürün Ekle</a>
+<br /><br />

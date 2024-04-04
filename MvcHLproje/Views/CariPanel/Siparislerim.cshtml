@@ -1,0 +1,43 @@
+﻿@using MvcHLproje.Models.Siniflar
+@model List<SatisHareket>
+
+@{
+    ViewBag.Title = "Siparislerim";
+    Layout = "~/Views/Shared/_CariLayout.cshtml";
+}
+
+<br />
+<h3>Sipariş Geçmişim</h3>
+<br />
+
+<table class="table table-bordered">
+
+    <tr>
+        <td>Ürün Adı</td>
+        <td>Sanatçı</td>
+        <td>Ürün Görseli</td>
+        <td>Fiyat</td>
+        <td>Adet</td>
+        <td>Toplam Tutar</td>
+        <td>Tarih</td>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.Urun.UrunAd</td>
+            <td>@x.Urun.Sanatci</td>
+
+            <td>
+                <a href="@x.Urun.UrunGorsel" target="_blank">
+                    <img src="@x.Urun.UrunGorsel" style="width:100px; height:100px;" />
+                </a>
+            </td>
+
+            <td>@x.Fiyat ₺</td>
+            <td>@x.Adet</td>
+            <td>@x.ToplamTutar ₺</td>
+            <td>@Convert.ToDateTime(x.Tarih).ToString("dd/MM/yyyy")</td>
+        </tr>
+    }
+</table>

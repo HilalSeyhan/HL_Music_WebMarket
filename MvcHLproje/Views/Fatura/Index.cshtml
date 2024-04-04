@@ -1,0 +1,81 @@
+﻿@using MvcHLproje.Models.Siniflar
+@model List<Faturalar>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Faturalar Sayfası</li>
+</ol>
+
+<table class="table table-bordered" style="margin-top:20px;">
+    <tr>
+        <th>Id</th>
+        <th>Seri Sıra No</th>
+        <th>Tarih</th>
+        <th>Saat</th>
+        <th>Toplam</th><!--sonradan ekledim.-->
+        <th>Güncelle</th>
+        <th>Detaylar / Yeni kalem</th>
+    </tr>
+    @foreach (var k in Model)
+    {
+        <tr>
+            <td>@k.FaturaId</td>
+            <td>@k.FaturaSeriNo  @k.FaturaSiraNo</td>
+            <td>@Convert.ToDateTime(k.Tarih).ToString("dd/MM/yyyy")</td>
+            <td>@k.Saat</td>
+            <td>@k.Toplam ₺</td>
+            <td><a href="/Fatura/FaturaGetir/@k.FaturaId" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Fatura/FaturaDetay/@k.FaturaId" class="btn btn-secondary">Detaylar / Yeni Kalem Ekleme</a></td>
+        </tr>
+    }
+</table>
+<a href="/Fatura/FaturaEkle" class="btn btn-primary">Yeni Fatura Girişi</a>
+
+<button type="button" class="btn btn-outline-danger d-inline" data-toggle="modal" data-target="#Modal1"> Detay Pop Up Penceresi</button>
+
+<br /><br />
+
+<!--Alt taraftaki button'un pop up kodları-->
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div style="text-align:right">
+                <!--kapatma tuşu için ekledim.-->
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    <i class="fas fa-times m-auto"></i>
+                </button>
+            </div>
+            <div class="modal-header">
+                <h3 class="modal-title">Pop Up Özet Ekranı</h3>
+            </div>
+
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Seri Sıra No</td>
+                        <td>Alıcısı</td>
+                        <td>Personel</td>
+                        <td>Toplam Tutar</td>
+                    </tr>
+
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+                            <td>@x.FaturaSeriNo  @x.FaturaSiraNo</td>
+                            <td>@x.TeslimAlan</td>
+                            <td>@x.TeslimEden</td>
+                            <td>@x.Toplam ₺</td>
+                        </tr>
+                    }
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+</div>

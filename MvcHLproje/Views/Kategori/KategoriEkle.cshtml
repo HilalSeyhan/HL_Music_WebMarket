@@ -1,0 +1,28 @@
+﻿@model MvcHLproje.Models.Siniflar.Kategori
+
+@{
+    ViewBag.Title = "KategoriEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+
+<br />
+<h3>Yeni Kategori Ekleme Sayfası</h3>
+<br />
+
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.KategoriAd)
+    @Html.TextBoxFor(x => x.KategoriAd, new { @class = "form-control" })
+
+    <br />
+
+    <button class="btn btn-outline-warning" id="KategoriEkleKayıtBtn">Kaydet</button>
+
+    <script>
+        $('#KategoriEkleKayıtBtn').click(function () {
+            alert("Kategori başarılı bir şekilde eklendi.")
+        })
+    </script>
+
+</form>
+<br /><br />

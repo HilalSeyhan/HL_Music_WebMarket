@@ -1,0 +1,222 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>HL Müzik Dünyası</title>
+    <link href="~/Web/dist/css/styles.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-warning">
+        <img src="~/images/logo.png" height="55" style="margin-left:5px; margin-right:5px;" />
+        @*<a class="navbar-brand" href="index.html">HL Müzik</a>*@
+        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
+            <i class="fas fa-bars" style="color:#000000"></i>
+        </button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Aranacak Kelimeyi Girin..." aria-label="Search" aria-describedby="basic-addon2" />
+                <div class="input-group-append">
+                    <button class="btn btn-dark" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#000000">
+                    <i class="fas fa-user fa-fw" style="color:#000000"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="#">Ayarlar</a>
+                    <a class="dropdown-item" href="#">Hesabım</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/CariPanel/LogOut/">Çıkış Yap</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">İşlemler</div>
+                        <a class="nav-link" href="/Kategori/Index/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-layer-group" style="color:white;"></i></div>
+                            Kategoriler
+                        </a>
+
+                        <a class="nav-link" href="/Urun/Index/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-compact-disc" style="color:white;"></i></div>
+                            Ürünler
+                        </a>
+
+                        <a class="nav-link" href="/Departman/Index/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-network-wired" style="color:white;"></i></div>
+                            Departmanlar
+                        </a>
+
+                        <a class="nav-link" href="/Cari/Index/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user-friends" style="color:white;"></i></div>
+                            Cariler
+                        </a>
+
+                        <a class="nav-link" href="/Personel/Index/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user-tie" style="color:white;"></i></div>
+                            Personeller
+                        </a>
+
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user-lock" style="color:white;"></i></div>
+                            Admin
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                    <div class="sb-nav-link-icon"><i class="fab fa-airbnb" style="color:white;"></i></div>
+                                    Yetkilendirme
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="#">
+                                            <div class="sb-nav-link-icon"><i class="fas fa-unlock-alt" style="color:white;"></i></div>
+                                            Giriş Yap
+                                        </a>
+
+                                        <a class="nav-link" href="#">
+                                            <div class="sb-nav-link-icon"><i class="fas fa-key" style="color:white;"></i></div>
+                                            Kayıt Ol
+                                        </a>
+
+                                        <a class="nav-link" href="#">
+                                            <div class="sb-nav-link-icon"><i class="fas fa-user-cog" style="color:white;"></i></div>
+                                            Parolamı Unuttum
+                                        </a>
+                                    </nav>
+                                </div>
+                                @*<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-bug" style="color:white;"></i></div>
+                                    Hata Sayfaları
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                    <nav class="sb-sidenav-menu-nested nav">
+
+                                        <a class="nav-link" href="#">
+                                            <div class="sb-nav-link-icon">
+                                                <i class="fas fa-exclamation-triangle" style="color:white;"></i>
+                                            </div>401 Page
+                                        </a>
+
+                                        <a class="nav-link" href="#">
+                                            <div class="sb-nav-link-icon">
+                                                <i class="fas fa-exclamation-triangle" style="color:white;"></i>
+                                            </div>404 Page
+                                        </a>
+
+                                        <a class="nav-link" href="#">
+                                            <div class="sb-nav-link-icon">
+                                                <i class="fas fa-exclamation-triangle" style="color:white;"></i>
+                                            </div>500 Page
+                                        </a>
+                                    </nav>
+                                </div>*@
+                            </nav>
+                        </div>
+
+                        <div class="sb-sidenav-menu-heading">Rapor &amp; Fatura</div>
+
+                        <a class="nav-link" href="/Satis/Index/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-hand-holding-usd" style="color:white;"></i></div>
+                            Satışlar
+                        </a>
+
+                        <a class="nav-link" href="/Fatura/Index/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-file-invoice-dollar" style="color:white;"></i></div>
+                            Faturalar
+                        </a>
+
+                        <a class="nav-link" href="#">
+                            <div class="sb-nav-link-icon"><i class="fas fa-search-dollar" style="color:white;"></i></div>
+                            Giderler
+                        </a>
+
+                        <a class="nav-link" href="/Kargo/Index/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-dolly" style="color:white;"></i></div>
+                            Kargolar
+                        </a>
+
+                        <a class="nav-link" href="/Urun/UrunListesi" target="_blank">
+                            <div class="sb-nav-link-icon"><i class="fas fa-print" style="color:white;"></i></div>
+                            Pdf ~ Excel
+                        </a>
+
+                        <a class="nav-link" href="/istatistik/Index/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-line" style="color:white;"></i></div>
+                            İstatistikler
+                        </a>
+
+                        <a class="nav-link" href="/istatistik/KolayTablolar/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-bar" style="color:white;"></i></div>
+                            Hızlı Bakış
+                        </a>
+
+                        <a class="nav-link" href="/Galeri/Index/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-images" style="color:white;"></i></div>
+                            Galeri
+                        </a>
+
+                        @*<a class="nav-link" href="/UrunDetay/Index/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-info-circle" style="color:white;"></i></div>
+                            Ürün Detay
+                        </a>*@
+
+                        <a class="nav-link" href="/Personel/PersonelListe/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user-astronaut" style="color:white;"></i></div>
+                            Personel Detay
+                        </a>
+
+                        <br />
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    @RenderBody()<!--sayfamızın değişken kısmı (content)-->
+                </div>
+            </main>
+            <footer class="py-4 bg-warning mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2019</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="~/Web/dist/js/scripts.js"></script>
+</body>
+</html>

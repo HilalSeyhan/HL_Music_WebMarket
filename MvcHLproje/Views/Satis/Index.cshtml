@@ -1,0 +1,42 @@
+﻿@using MvcHLproje.Models.Siniflar
+@model List<SatisHareket>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Satışlar Sayfası</li>
+</ol>
+<table class="table table-bordered" style="margin-top:20px;">
+    <tr>
+        <th>Id</th>
+        <th>Ürün</th>
+        <th>Cari</th>
+        <th>Personel</th>
+        <th>Birim Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam Fiyat</th>
+        <th>Tarih</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var k in Model)
+    {
+        <tr>
+            <td>@k.SatisId</td>
+            <td>@k.Urun.UrunAd</td>
+            <td>@k.Cariler.CariAd  @k.Cariler.CariSoyad</td>
+            <td>@k.Personel.PersonelAd  @k.Personel.PersonelSoyad</td>
+            <td>@k.Fiyat ₺</td>
+            <td>@k.Adet</td>
+            <td>@k.ToplamTutar ₺</td>
+            <td>@Convert.ToDateTime(k.Tarih).ToString("dd/MM/yyyy")</td>
+            <td><a href="/Satis/SatisGetir/@k.SatisId" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Satis/SatisDetay/@k.SatisId" class="btn btn-secondary">Detaylar</a></td>
+        </tr>
+    }
+</table>
+<a href="/Satis/YeniSatis" class="btn btn-primary">Satış Yap</a>
+<br /><br />

@@ -1,0 +1,23 @@
+﻿@model MvcHLproje.Models.Siniflar.Departman
+
+@{
+    ViewBag.Title = "DepartmanGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h3>Departman Güncelleme Sayfası</h3>
+<br />
+
+@using (Html.BeginForm("DepartmanGuncelle", "Departman", FormMethod.Post))//sayfa yüklendikten sonra ben bir post işlemi gerçekleştirdiğimde hangi ActionResualt çalışacak
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.DepartmanAd)
+        @Html.TextBoxFor(x => x.DepartmanAd, new { @class = "form-control" })
+        @Html.HiddenFor(x => x.DepartmanId)<!--Id'yi gizli olarak tuttum(visible'ı false olmuş değer olarak.)-->
+    </div>
+
+    <button class="btn btn-outline-warning">Kaydet</button>
+
+}
+<br /><br />

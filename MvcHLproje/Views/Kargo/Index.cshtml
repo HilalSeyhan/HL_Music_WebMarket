@@ -1,0 +1,45 @@
+﻿@using MvcHLproje.Models.Siniflar
+@model List<KargoDetay>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Kargolar Sayfası</li>
+</ol>
+
+<!--arama ile listeleme-->
+<div style="text-align:right;">
+    @using (Html.BeginForm("Index", "Kargo", FormMethod.Get))
+    {
+        <p>
+            Kargo Takip Numarası :  @Html.TextBox("p")<!--buradaki p parametresi textbox'a yazılan değer oluyor.-->
+            <input type="submit" value="Ara" />
+        </p>
+    }
+</div>
+
+<table class="table table-bordered" style="margin-top:20px;">
+    <tr>
+        <th>Personel</th>
+        <th>Alıcı</th>
+        <th>Kargo Takip Numarası</th>
+        <th>Tarih</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var k in Model)
+    {
+        <tr>
+            <td>@k.Personel</td>
+            <td>@k.Alici</td>
+            <td>@k.TakipKodu</td>
+            <td>@Convert.ToDateTime(k.Tarih).ToString("dd/MM/yyyy")</td>
+            <td><a href="/Kargo/KargoTakip/@k.TakipKodu" class="btn btn-secondary">Detaylar</a></td>
+        </tr>
+    }
+</table>
+<a href="/Kargo/YeniKargo" class="btn btn-primary">Yeni Kargo Girişi</a>
+<br /><br />

@@ -1,0 +1,39 @@
+﻿@model MvcHLproje.Models.Siniflar.Cariler
+
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_CariLayout.cshtml";
+    }
+
+    <br />
+    <h3>HL Müzik Dünyası Müşteri Bilgi Paneli</h3>
+    <br />
+
+@using (Html.BeginForm("Index2", "CariPanel", FormMethod.Post))
+{
+    <table class="table table-hover">
+        <tr>
+            <td><label>Mail Adresi : @HttpContext.Current.User.Identity.Name</label></td>
+        </tr>
+
+        <tr>
+            <td><label>Ad:</label> @Html.TextBoxFor(x => x.CariAd, new { @class = "form-control" })</td>
+        </tr>
+
+        <tr>
+            <td><label>Soyad:</label> @Html.TextBoxFor(x => x.CariSoyad, new { @class = "form-control" })</td>
+        </tr>
+
+        <tr>
+            <td><label>Şehir:</label> @Html.TextBoxFor(x => x.CariSehir, new { @class = "form-control" })</td>
+        </tr>
+
+        <tr>
+            <td><label>Parola:</label> @Html.TextBoxFor(x => x.CariParola, new { @class = "form-control" })</td>
+        </tr>
+
+    </table>
+
+    <button class="btn btn-outline-warning">Bilgilerimi Güncelle</button>
+}

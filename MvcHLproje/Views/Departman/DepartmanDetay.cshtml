@@ -1,0 +1,42 @@
+﻿@using MvcHLproje.Models.Siniflar
+@model List<Personel>
+
+    @{
+        ViewBag.Title = "DepartmanDetay";
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+
+    <br />
+    <h3>Departman Detay Sayfası</h3>
+    <br />
+
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Departman Adı : @ViewBag.d</li>
+    </ol>
+
+    <table class="table table-condensed">
+        <tr>
+            <th>Personel Id</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Görsel</th>
+            <th>Satışlar</th>
+        </tr>
+
+        @foreach(var x in Model)
+        {
+            <tr>
+                <td>@x.PersonelId</td>
+                <td>@x.PersonelAd</td>
+                <td>@x.PersonelSoyad</td>
+
+                <td>
+                    <img src="@x.PersonelGorsel" style="width:100px; height:100px;" />
+                </td>
+
+                <td><a href="/Departman/DepartmanPersonelSatis/@x.PersonelId" class="btn btn-outline-info">Satışlar</a></td>
+            </tr>
+        }
+    </table>
+
+
